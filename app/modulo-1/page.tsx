@@ -165,7 +165,7 @@ export default function Module1Page() {
             <li>Aprender sobre un tema que te interesa</li>
           </ul>
           <p className="text-base text-muted-foreground leading-relaxed">
-            (Aquí podrías agregar un formulario interactivo o espacio para que el usuario escriba sus ideas)
+            (Aca la idea es  agregar un multiple choice para que el usuario vea si aprendio el contenido del modulo)
           </p>
         </CardContent>
       </Card>

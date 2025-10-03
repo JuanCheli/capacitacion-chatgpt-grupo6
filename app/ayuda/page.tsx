@@ -225,7 +225,7 @@ export default function HelpPage() {
             </div>
             <div>
               <h3 className="font-semibold mb-2">📞 Teléfono de ayuda</h3>
-              <p className="text-muted-foreground">+54 11 1234-5678</p>
+              <p className="text-muted-foreground">+54 9 1234-5678</p>
             </div>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
