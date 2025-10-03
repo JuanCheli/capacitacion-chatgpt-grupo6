@@ -31,12 +31,14 @@ export default function Module1Page() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-            <div className="text-center space-y-3 p-6">
-              <Video className="h-16 w-16 text-muted-foreground mx-auto" />
-              <p className="text-muted-foreground text-lg">Aquí irá el video introductorio del módulo</p>
-              <p className="text-sm text-muted-foreground">(Espacio reservado para contenido multimedia)</p>
-            </div>
+          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/GOkDK_-fj1k"
+              title="Video introductorio del módulo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         </CardContent>
       </Card>
