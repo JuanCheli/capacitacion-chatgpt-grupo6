@@ -1,10 +1,110 @@
+"use client"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
-import { ArrowLeft, Video, Shield, AlertTriangle, CheckCircle2, Info } from "lucide-react"
+import { ArrowLeft, Video, Shield, AlertTriangle, CheckCircle2, Info, XCircle } from "lucide-react"
+import { useState } from "react"
 
 export default function Module5Page() {
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({})
+  const [showResults, setShowResults] = useState(false)
+  const [quizSubmitted, setQuizSubmitted] = useState(false)
+
+  const questions = [
+    {
+      id: 1,
+      question: "¿Cuál de estos datos NO debes compartir con ChatGPT?",
+      options: [
+        "El nombre de tu ciudad",
+        "Tu contraseña de correo electrónico",
+        "Preguntas sobre recetas de cocina",
+        "Tu tema favorito de conversación"
+      ],
+      correctAnswer: 1
+    },
+    {
+      id: 2,
+      question: "¿Por qué ChatGPT no es un reemplazo de profesionales como médicos o abogados?",
+      options: [
+        "Porque es muy lento para responder",
+        "Porque solo habla en inglés",
+        "Porque puede dar información general pero no diagnósticos ni asesoramiento profesional",
+        "Porque no puede escribir textos largos"
+      ],
+      correctAnswer: 2
+    },
+    {
+      id: 3,
+      question: "¿Qué debes hacer si ChatGPT te da información importante sobre salud o finanzas?",
+      options: [
+        "Confiar completamente sin verificar",
+        "Verificar con fuentes oficiales o profesionales",
+        "Compartir la información inmediatamente con todos",
+        "Ignorar la información por completo"
+      ],
+      correctAnswer: 1
+    },
+    {
+      id: 4,
+      question: "¿Cuál de estas afirmaciones sobre ChatGPT es correcta?",
+      options: [
+        "Siempre tiene razón y nunca se equivoca",
+        "Puede hacer compras y enviar correos por ti",
+        "Puede equivocarse y dar información incorrecta o desactualizada",
+        "Tiene acceso a todas tus cuentas personales"
+      ],
+      correctAnswer: 2
+    },
+    {
+      id: 5,
+      question: "¿Qué debes hacer al terminar de usar ChatGPT en una computadora compartida?",
+      options: [
+        "Dejar la sesión abierta para la próxima vez",
+        "Cerrar sesión para proteger tu privacidad",
+        "Compartir tu contraseña con otros usuarios",
+        "Eliminar tu cuenta completamente"
+      ],
+      correctAnswer: 1
+    }
+  ]
+
+  const handleAnswerSelect = (questionId: number, answerIndex: number) => {
+    if (!quizSubmitted) {
+      setSelectedAnswers((prev) => ({
+        ...prev,
+        [questionId]: answerIndex,
+      }))
+    }
+  }
+
+  const handleSubmitQuiz = () => {
+    if (Object.keys(selectedAnswers).length === questions.length) {
+      setQuizSubmitted(true)
+      setShowResults(true)
+    }
+  }
+
+  const handleRetryQuiz = () => {
+    setSelectedAnswers({})
+    setQuizSubmitted(false)
+    setShowResults(false)
+  }
+
+  const calculateScore = () => {
+    let correct = 0
+    questions.forEach((q) => {
+      if (selectedAnswers[q.id] === q.correctAnswer) {
+        correct++
+      }
+    })
+    return correct
+  }
+
+  const score = showResults ? calculateScore() : 0
+  const allAnswered = Object.keys(selectedAnswers).length === questions.length
+
   return (
     <div className="container max-w-4xl mx-auto px-4 py-8 lg:py-12 space-y-8">
       <div className="space-y-4">
@@ -224,6 +324,116 @@ export default function Module5Page() {
           </Card>
         </section>
       </div>
+
+      {/* Quiz Section */}
+      <Card className="bg-accent">
+        <CardHeader>
+          <CardTitle className="text-xl">Evaluación del Módulo 5</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <p className="text-lg leading-relaxed">
+            Responde estas preguntas para verificar que has comprendido el contenido del módulo:
+          </p>
+
+          {questions.map((question, qIndex) => (
+            <div key={question.id} className="space-y-3">
+              <h3 className="text-lg font-semibold">
+                {qIndex + 1}. {question.question}
+              </h3>
+              <div className="space-y-2">
+                {question.options.map((option, optIndex) => {
+                  const isSelected = selectedAnswers[question.id] === optIndex
+                  const isCorrect = optIndex === question.correctAnswer
+                  const showCorrectAnswer = quizSubmitted && isCorrect
+                  const showIncorrectAnswer = quizSubmitted && isSelected && !isCorrect
+
+                  return (
+                    <button
+                      key={optIndex}
+                      onClick={() => handleAnswerSelect(question.id, optIndex)}
+                      disabled={quizSubmitted}
+                      className={`w-full text-left p-4 rounded-lg border-2 transition-all text-base lg:text-lg ${
+                        showCorrectAnswer
+                          ? "border-green-500 bg-green-50 dark:bg-green-950"
+                          : showIncorrectAnswer
+                            ? "border-red-500 bg-red-50 dark:bg-red-950"
+                            : isSelected
+                              ? "border-primary bg-primary/10"
+                              : "border-border bg-card hover:border-primary/50"
+                      } ${quizSubmitted ? "cursor-not-allowed" : "cursor-pointer"}`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                            showCorrectAnswer
+                              ? "border-green-500 bg-green-500"
+                              : showIncorrectAnswer
+                                ? "border-red-500 bg-red-500"
+                                : isSelected
+                                  ? "border-primary bg-primary"
+                                  : "border-muted-foreground"
+                          }`}
+                        >
+                          {showCorrectAnswer && <CheckCircle2 className="h-4 w-4 text-white" />}
+                          {showIncorrectAnswer && <XCircle className="h-4 w-4 text-white" />}
+                          {isSelected && !quizSubmitted && <div className="w-3 h-3 rounded-full bg-white" />}
+                        </div>
+                        <span className="leading-relaxed">{option}</span>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+
+          {!quizSubmitted && (
+            <Button onClick={handleSubmitQuiz} disabled={!allAnswered} size="lg" className="w-full text-lg">
+              {allAnswered
+                ? "Enviar respuestas"
+                : `Responde todas las preguntas (${Object.keys(selectedAnswers).length}/${questions.length})`}
+            </Button>
+          )}
+
+          {showResults && (
+            <Alert className={score >= 4 ? "border-green-500" : score >= 3 ? "border-yellow-500" : "border-red-500"}>
+              <AlertDescription className="space-y-3">
+                <p className="text-lg font-semibold">
+                  Tu puntuación: {score} de {questions.length} respuestas correctas
+                </p>
+                {score === 5 && (
+                  <p className="text-base leading-relaxed">
+                    ¡Excelente! Has comprendido perfectamente las buenas prácticas de seguridad. Estás listo para usar ChatGPT de forma segura.
+                  </p>
+                )}
+                {score === 4 && (
+                  <p className="text-base leading-relaxed">
+                    ¡Muy bien! Has comprendido la mayoría del contenido sobre seguridad. Puedes comenzar a usar ChatGPT con confianza.
+                  </p>
+                )}
+                {score === 3 && (
+                  <p className="text-base leading-relaxed">
+                    Bien hecho. Te recomendamos revisar el contenido del módulo para reforzar los conceptos de seguridad.
+                  </p>
+                )}
+                {score < 3 && (
+                  <p className="text-base leading-relaxed">
+                    Te sugerimos revisar el contenido del módulo con atención, especialmente las secciones sobre seguridad y privacidad.
+                  </p>
+                )}
+                <Button
+                  onClick={handleRetryQuiz}
+                  variant="outline"
+                  size="lg"
+                  className="w-full text-base bg-transparent"
+                >
+                  Intentar de nuevo
+                </Button>
+              </AlertDescription>
+            </Alert>
+          )}
+        </CardContent>
+      </Card>
 
       <Card className="bg-accent border-primary">
         <CardHeader>
