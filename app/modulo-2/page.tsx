@@ -126,15 +126,18 @@ export default function Module2Page() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl">
             <Video className="h-6 w-6 text-primary" />
-            Video tutorial paso a paso
+            Video: Primeros pasos con ChatGPT
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-            <div className="text-center space-y-3 p-6">
-              <Video className="h-16 w-16 text-muted-foreground mx-auto" />
-              <p className="text-muted-foreground text-lg">Video: Cómo acceder a ChatGPT desde tu dispositivo</p>
-            </div>
+          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/Io1bBA7vcpw"
+              title="Video introductorio del módulo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         </CardContent>
       </Card>
