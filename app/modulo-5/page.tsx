@@ -537,30 +537,32 @@ export default function Module5Page() {
         </CardContent>
       </Card>
 
-      <Card className="bg-accent border-primary">
-        <CardHeader>
-          <CardTitle className="text-xl">¡Felicitaciones!</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-lg leading-relaxed">
-            Has completado todos los módulos del manual. Ahora estás listo para
-            usar ChatGPT de forma segura y efectiva.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg" className="text-base">
-              <Link href="/simulador">Practicar en el Simulador</Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="text-base bg-transparent"
-            >
-              <Link href="/ayuda">Ver Recursos de Ayuda</Link>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      {showResults && score >= 3 && (
+        <Card className="bg-accent border-primary">
+          <CardHeader>
+            <CardTitle className="text-xl">¡Felicitaciones!</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-lg leading-relaxed">
+              Has completado todos los módulos del manual. Ahora estás listo para
+              usar ChatGPT de forma segura y efectiva.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button asChild size="lg" className="text-base">
+                <Link href="/simulador">Practicar en el Simulador</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="text-base bg-transparent"
+              >
+                <Link href="/ayuda">Ver Recursos de Ayuda</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       <div className="flex justify-start pt-8 border-t">
         <Button
