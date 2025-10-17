@@ -142,6 +142,26 @@ export default function Module1Page() {
           </div>
         </CardContent>
       </Card>
+      
+      {/* Presentation section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-xl">
+            <BookOpen className="h-6 w-6 text-primary" />
+            Presentación del módulo
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+            <iframe
+              className="w-full h-full"
+              src="https://docs.google.com/presentation/d/1GKiu4UfzM8-mudwF_549Yqaf9qqlHHfTVgur53lVfx8/embed?start=false&loop=false&delayms=3000"
+              title="Presentación del módulo"
+              allowFullScreen
+            />
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Content sections */}
       <div className="space-y-6">
