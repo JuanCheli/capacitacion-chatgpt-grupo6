@@ -13,25 +13,48 @@ export default function SimulatorPage() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return
 
     // Add user message
     const userMessage = { role: "user" as const, content: input }
     setMessages((prev) => [...prev, userMessage])
+    const currentInput = input
     setInput("")
     setIsLoading(true)
 
-    // Simulate AI response (placeholder - backend will handle real responses)
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://capacitaci-n-chatgpt-grupo6-backend.onrender.com/simulador/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: currentInput
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor')
+      }
+
+      const data = await response.json()
+      
       const assistantMessage = {
         role: "assistant" as const,
-        content:
-          "Esta es una respuesta simulada. En la versión final, aquí aparecerá la respuesta real de ChatGPT basada en tu pregunta.",
+        content: data.reply || "Lo siento, no pude generar una respuesta.",
       }
       setMessages((prev) => [...prev, assistantMessage])
+    } catch (error) {
+      console.error('Error al enviar mensaje:', error)
+      const errorMessage = {
+        role: "assistant" as const,
+        content: "Lo siento, hubo un error al procesar tu pregunta. Por favor, intenta nuevamente.",
+      }
+      setMessages((prev) => [...prev, errorMessage])
+    } finally {
       setIsLoading(false)
-    }, 1000)
+    }
   }
 
   const handleReset = () => {
@@ -168,25 +191,7 @@ export default function SimulatorPage() {
           </div>
         </CardContent>
       </Card>
-
-      {/* RAG placeholder */}
-      <Card className="bg-accent">
-        <CardHeader>
-          <CardTitle className="text-xl">¿Tienes dudas sobre el manual?</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-lg leading-relaxed">
-            Nuestro asistente inteligente puede responder preguntas sobre el contenido de este manual.
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed">
-            (Aquí se integrará el sistema RAG que responderá preguntas contextuales sobre el manual)
-          </p>
-          <Button variant="outline" size="lg" className="text-base bg-transparent">
-            Preguntar sobre el manual
-          </Button>
-        </CardContent>
-      </Card>
-
+      
       <div className="flex justify-start pt-4">
         <Button asChild variant="outline" size="lg" className="text-base bg-transparent">
           <Link href="/">

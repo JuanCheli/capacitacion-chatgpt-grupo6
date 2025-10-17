@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Suspense } from "react"
+import RagAssistant from "@/components/rag"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
             <Navigation />
           </Suspense>
           <main className="flex-1 bg-background">{children}</main>
+          <RagAssistant />
         </div>
         <Analytics />
       </body>
