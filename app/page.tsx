@@ -1,7 +1,16 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { BookOpen, Clock, Users, Sparkles } from "lucide-react"
+"use client";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { BookOpen, Clock, Users, Sparkles } from "lucide-react";
+import PodcastPlayer from "@/components/podcast-player";
 
 export default function HomePage() {
   return (
@@ -12,13 +21,19 @@ export default function HomePage() {
           Bienvenido a tu Manual de ChatGPT
         </h1>
         <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
-          Aprende a usar ChatGPT paso a paso, a tu propio ritmo, con ejemplos prácticos y ejercicios interactivos.
+          Aprende a usar ChatGPT paso a paso, a tu propio ritmo, con ejemplos
+          prácticos y ejercicios interactivos.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
           <Button asChild size="lg" className="text-lg px-8 py-6">
             <Link href="/modulo-1">Comenzar Ahora</Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="text-lg px-8 py-6 bg-transparent"
+          >
             <Link href="/simulador">Probar Simulador</Link>
           </Button>
         </div>
@@ -33,8 +48,8 @@ export default function HomePage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed">
-              Aprende cuando quieras, sin presiones. Puedes volver a ver los videos y leer las guías las veces que
-              necesites.
+              Aprende cuando quieras, sin presiones. Puedes volver a ver los
+              videos y leer las guías las veces que necesites.
             </p>
           </CardContent>
         </Card>
@@ -46,7 +61,8 @@ export default function HomePage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed">
-              Usa nuestro simulador para practicar sin miedo a equivocarte. Es un espacio seguro para experimentar.
+              Usa nuestro simulador para practicar sin miedo a equivocarte. Es
+              un espacio seguro para experimentar.
             </p>
           </CardContent>
         </Card>
@@ -58,7 +74,8 @@ export default function HomePage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed">
-              Si tienes dudas, pregunta a nuestro asistente o contacta con nuestro equipo de soporte.
+              Si tienes dudas, pregunta a nuestro asistente o contacta con
+              nuestro equipo de soporte.
             </p>
           </CardContent>
         </Card>
@@ -67,9 +84,12 @@ export default function HomePage() {
       {/* Modules overview */}
       <section className="space-y-6">
         <div className="text-center space-y-3">
-          <h2 className="text-3xl font-bold text-foreground">Los 5 Módulos de Aprendizaje</h2>
+          <h2 className="text-3xl font-bold text-foreground">
+            Los 5 Módulos de Aprendizaje
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Cada módulo dura entre 20 y 60 minutos. Completa todos para dominar ChatGPT.
+            Cada módulo dura entre 20 y 60 minutos. Completa todos para dominar
+            ChatGPT.
           </p>
         </div>
 
@@ -116,18 +136,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Podcast section */}
+      <PodcastPlayer />
+
       {/* CTA section */}
       <section className="bg-accent rounded-2xl p-8 lg:p-12 text-center space-y-6">
-        <h2 className="text-3xl font-bold text-accent-foreground">¿Listo para empezar?</h2>
+        <h2 className="text-3xl font-bold text-accent-foreground">
+          ¿Listo para empezar?
+        </h2>
         <p className="text-lg text-accent-foreground/80 max-w-2xl mx-auto leading-relaxed">
-          No necesitas experiencia previa. Te guiaremos paso a paso en cada módulo.
+          No necesitas experiencia previa. Te guiaremos paso a paso en cada
+          módulo.
         </p>
         <Button asChild size="lg" className="text-lg px-8 py-6">
           <Link href="/modulo-1">Ir al Módulo 1</Link>
         </Button>
       </section>
     </div>
-  )
+  );
 }
 
 function ModuleCard({
@@ -137,11 +163,11 @@ function ModuleCard({
   duration,
   href,
 }: {
-  number: number
-  title: string
-  description: string
-  duration: string
-  href: string
+  number: number;
+  title: string;
+  description: string;
+  duration: string;
+  href: string;
 }) {
   return (
     <Card className="hover:shadow-lg transition-shadow">
@@ -151,8 +177,12 @@ function ModuleCard({
             {number}
           </div>
           <div className="flex-1 space-y-2">
-            <CardTitle className="text-xl lg:text-2xl text-balance">{title}</CardTitle>
-            <CardDescription className="text-base leading-relaxed">{description}</CardDescription>
+            <CardTitle className="text-xl lg:text-2xl text-balance">
+              {title}
+            </CardTitle>
+            <CardDescription className="text-base leading-relaxed">
+              {description}
+            </CardDescription>
             <div className="flex items-center gap-2 text-sm text-muted-foreground pt-2">
               <Clock className="h-4 w-4" />
               <span>{duration}</span>
@@ -161,7 +191,11 @@ function ModuleCard({
         </div>
       </CardHeader>
       <CardContent>
-        <Button asChild variant="outline" className="w-full text-base py-5 bg-transparent">
+        <Button
+          asChild
+          variant="outline"
+          className="w-full text-base py-5 bg-transparent"
+        >
           <Link href={href}>
             <BookOpen className="h-5 w-5 mr-2" />
             Comenzar Módulo
@@ -169,5 +203,5 @@ function ModuleCard({
         </Button>
       </CardContent>
     </Card>
-  )
+  );
 }
