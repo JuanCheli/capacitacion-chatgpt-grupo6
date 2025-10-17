@@ -27,9 +27,14 @@ export default function RagAssistant() {
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
-    const userMessage = { role: "user" as const, content: input };
+    // Guardar la pregunta actual antes de limpiar el input
+    const currentQuestion = input.trim();
+    
+    // Agregar mensaje del usuario
+    const userMessage = { role: "user" as const, content: currentQuestion };
     setMessages((prev) => [...prev, userMessage]);
-    const currentInput = input;
+    
+    // Limpiar input y activar loading
     setInput("");
     setIsLoading(true);
 
@@ -42,7 +47,7 @@ export default function RagAssistant() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            question: currentInput,
+            question: currentQuestion,
           }),
         }
       );
