@@ -313,7 +313,7 @@ export default function Module4Page() {
       </Card>
 
       {/* Quiz Section */}
-      <Card className="bg-accent">
+      <Card className="bg-primary-light">
         <CardHeader>
           <CardTitle className="text-xl">Evaluación del Módulo 4</CardTitle>
         </CardHeader>

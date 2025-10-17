@@ -140,7 +140,7 @@ export default function HomePage() {
       <PodcastPlayer />
 
       {/* CTA section */}
-      <section className="bg-accent rounded-2xl p-8 lg:p-12 text-center space-y-6">
+      <section className="bg-primary-light rounded-2xl p-8 lg:p-12 text-center space-y-6">
         <h2 className="text-3xl font-bold text-accent-foreground">
           ¿Listo para empezar?
         </h2>

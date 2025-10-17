@@ -357,7 +357,7 @@ export default function Module2Page() {
       </Card>
 
       {/* Quiz Section */}
-      <Card className="bg-accent">
+      <Card className="bg-primary-light">
         <CardHeader>
           <CardTitle className="text-xl">Evaluación del Módulo 2</CardTitle>
         </CardHeader>

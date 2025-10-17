@@ -273,7 +273,7 @@ export default function Module1Page() {
       </div>
 
       {/* Interactive exercise placeholder */}
-      <Card className="bg-accent">
+      <Card className="bg-primary-light">
         <CardHeader>
           <CardTitle className="text-xl">Evaluación del Módulo 1</CardTitle>
         </CardHeader>

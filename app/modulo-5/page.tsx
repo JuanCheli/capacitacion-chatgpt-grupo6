@@ -397,7 +397,7 @@ export default function Module5Page() {
       </div>
 
       {/* Quiz Section */}
-      <Card className="bg-accent">
+      <Card className="bg-primary-light">
         <CardHeader>
           <CardTitle className="text-xl">Evaluación del Módulo 5</CardTitle>
         </CardHeader>
