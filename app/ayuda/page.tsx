@@ -25,7 +25,7 @@ export default function HelpPage() {
       </div>
 
       {/* Support options */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
             <HelpCircle className="h-10 w-10 text-primary mb-2" />
@@ -37,19 +37,6 @@ export default function HelpPage() {
             </p>
             <Button variant="outline" className="w-full bg-transparent" asChild>
               <a href="#faq">Ver FAQ</a>
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <MessageSquare className="h-10 w-10 text-primary mb-2" />
-            <CardTitle className="text-xl">Foro Comunitario</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground leading-relaxed mb-4">Comparte experiencias con otros usuarios.</p>
-            <Button variant="outline" className="w-full bg-transparent" asChild>
-              <a href="#forum">Ir al Foro</a>
             </Button>
           </CardContent>
         </Card>
@@ -128,37 +115,6 @@ export default function HelpPage() {
         </Card>
       </section>
 
-      {/* Forum placeholder */}
-      <section id="forum" className="space-y-4 scroll-mt-8">
-        <h2 className="text-2xl font-bold text-foreground">Foro Comunitario</h2>
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl">Comparte y aprende con otros usuarios</CardTitle>
-            <CardDescription className="text-base">
-              Un espacio moderado donde puedes hacer preguntas, compartir experiencias y ayudar a otros.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground leading-relaxed">
-              (Aquí se integrará el foro moderado donde los usuarios pueden publicar preguntas y respuestas)
-            </p>
-            <div className="bg-muted p-6 rounded-lg space-y-3">
-              <p className="font-semibold">Temas populares:</p>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>• Mis primeros pasos con ChatGPT</li>
-                <li>• Recetas que he descubierto usando ChatGPT</li>
-                <li>• Cómo uso ChatGPT para mantenerme en contacto con mi familia</li>
-                <li>• Dudas sobre seguridad y privacidad</li>
-              </ul>
-            </div>
-            <Button size="lg" className="text-base">
-              <MessageSquare className="h-5 w-5 mr-2" />
-              Acceder al Foro
-            </Button>
-          </CardContent>
-        </Card>
-      </section>
-
       {/* Contact form */}
       <section id="contact" className="space-y-4 scroll-mt-8">
         <h2 className="text-2xl font-bold text-foreground">Formulario de Contacto</h2>
@@ -221,11 +177,11 @@ export default function HelpPage() {
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <h3 className="font-semibold mb-2">📧 Correo de soporte</h3>
-              <p className="text-muted-foreground">soporte@ejemplo.com</p>
+              <p className="text-muted-foreground">capacitaciongpt@soporte.com</p>
             </div>
             <div>
               <h3 className="font-semibold mb-2">📞 Teléfono de ayuda</h3>
-              <p className="text-muted-foreground">+54 9 1234-5678</p>
+              <p className="text-muted-foreground">+54 9 351-7691445</p>
             </div>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
