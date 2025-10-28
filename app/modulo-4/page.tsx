@@ -121,19 +121,43 @@ export default function Module4Page() {
         <p className="text-lg text-muted-foreground leading-relaxed">Duración estimada: 40-60 minutos</p>
       </div>
 
+      {/* Video placeholder */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl">
             <Video className="h-6 w-6 text-primary" />
-            Video: Casos de uso reales
+            Video: Primeros pasos con ChatGPT
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-            <div className="text-center space-y-3 p-6">
-              <Video className="h-16 w-16 text-muted-foreground mx-auto" />
-              <p className="text-muted-foreground text-lg">Video con ejemplos prácticos de uso diario</p>
-            </div>
+          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/ET-avaDoAP8"
+              title="Video introductorio del módulo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Presentation section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-xl">
+            <BookOpen className="h-6 w-6 text-primary" />
+            Presentación del módulo
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+            <iframe
+              className="w-full h-full"
+              src="https://docs.google.com/presentation/d/1txuhb7hwspGIMI8jyE2h7cui1XR1Rn689KIBeVcH13s/embed?start=false&loop=false&delayms=3000"
+              title="Presentación del módulo"
+              allowFullScreen
+            />
           </div>
         </CardContent>
       </Card>
