@@ -13,6 +13,36 @@ export default function SimulatorPage() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
+  const formatMarkdown = (text: string) => {
+    return text.split('\n').map((line, i) => {
+      // Bold text
+      const boldRegex = /\*\*(.*?)\*\*/g
+      let parts: (string | JSX.Element)[] = []
+      let lastIndex = 0
+      let match
+      
+      while ((match = boldRegex.exec(line)) !== null) {
+        if (match.index > lastIndex) {
+          parts.push(line.substring(lastIndex, match.index))
+        }
+        parts.push(<strong key={`bold-${i}-${match.index}`}>{match[1]}</strong>)
+        lastIndex = match.index + match[0].length
+      }
+      
+      if (lastIndex < line.length) {
+        parts.push(line.substring(lastIndex))
+      }
+      
+      if (parts.length === 0) parts = [line]
+      
+      return (
+        <span key={i} className="block mb-2">
+          {parts}
+        </span>
+      )
+    })
+  }
+
   const handleSend = async () => {
     if (!input.trim()) return
 
@@ -145,7 +175,9 @@ export default function SimulatorPage() {
                     message.role === "user" ? "bg-primary text-primary-foreground ml-8" : "bg-muted mr-8"
                   }`}
                 >
-                  <p className="text-base leading-relaxed">{message.content}</p>
+                  <div className="text-base leading-relaxed whitespace-pre-wrap">
+                    {message.role === "assistant" ? formatMarkdown(message.content) : message.content}
+                  </div>
                 </div>
               ))}
               {isLoading && (
