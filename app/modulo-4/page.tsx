@@ -126,7 +126,7 @@ export default function Module4Page() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl">
             <Video className="h-6 w-6 text-primary" />
-            Video: Primeros pasos con ChatGPT
+            Video: Aplicaciones prácticas para la vida cotidiana
           </CardTitle>
         </CardHeader>
         <CardContent>

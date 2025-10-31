@@ -141,7 +141,7 @@ export default function Module5Page() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl">
             <Video className="h-6 w-6 text-primary" />
-            Video introductorio
+            Video: Seguridad digital y buenas prácticas
           </CardTitle>
         </CardHeader>
         <CardContent>
