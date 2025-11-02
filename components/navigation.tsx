@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { Home, BookOpen, Lightbulb, MessageSquare, Shield, PlayCircle, HelpCircle, Menu, X } from "lucide-react"
+import { Home, BookOpen, Lightbulb, MessageSquare, Shield, PlayCircle, HelpCircle, Menu, X, Mail } from "lucide-react"
 import { useState } from "react"
 
 const navigation = [
@@ -15,7 +15,8 @@ const navigation = [
   { name: "Módulo 4: Aplicaciones", href: "/modulo-4", icon: PlayCircle },
   { name: "Módulo 5: Seguridad", href: "/modulo-5", icon: Shield },
   { name: "Simulador", href: "/simulador", icon: PlayCircle },
-  { name: "Ayuda", href: "/ayuda", icon: HelpCircle },
+  { name: "Preguntas Frecuentes", href: "/preguntas-frecuentes", icon: HelpCircle },
+  { name: "Contáctanos", href: "/contactanos", icon: Mail },
 ]
 
 export function Navigation() {
@@ -45,9 +46,6 @@ export function Navigation() {
           {/* Logo/Title */}
           <div className="hidden lg:block">
             <h1 className="text-2xl font-bold text-sidebar-foreground text-balance">Aprende ChatGPT</h1>
-            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-              Manual interactivo para adultos mayores
-            </p>
           </div>
 
           {/* Navigation links */}
@@ -81,7 +79,6 @@ export function Navigation() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <p className="leading-relaxed">• Usa Tab para navegar</p>
               <p className="leading-relaxed">• Presiona Enter para seleccionar</p>
-              <p className="leading-relaxed">• Aumenta el zoom del navegador si necesitas</p>
             </div>
           </div>
         </div>
