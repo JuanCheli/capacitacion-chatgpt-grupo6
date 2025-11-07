@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { BookOpen, Clock, Users, Sparkles, ClipboardList, ExternalLink } from "lucide-react";
+import { BookOpen, Clock, Users, Sparkles, ClipboardList, ExternalLink, Target, Heart, Lightbulb } from "lucide-react";
 import PodcastPlayer from "@/components/podcast-player";
 
 export default function HomePage() {
@@ -28,15 +28,13 @@ export default function HomePage() {
 
       {/* Course Info Cards */}
       <section className="grid md:grid-cols-3 gap-4 md:gap-6">
-        <Card className="border-2">
+        <Card>
           <CardHeader>
-            <CardTitle className="text-lg md:text-xl flex items-center gap-2">
-              <Sparkles className="h-6 w-6 text-primary flex-shrink-0" />
-              <span>Objetivos del Curso</span>
-            </CardTitle>
+            <Target className="h-10 w-10 text-primary mb-2" />
+            <CardTitle className="text-xl">Objetivos del Curso</CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-2 text-sm md:text-base text-muted-foreground leading-relaxed">
+            <ul className="space-y-2 text-muted-foreground leading-relaxed">
               <li>• Comprender qué es la IA y ChatGPT</li>
               <li>• Crear y usar tu cuenta de forma segura</li>
               <li>• Hacer preguntas efectivas</li>
@@ -46,15 +44,13 @@ export default function HomePage() {
           </CardContent>
         </Card>
 
-        <Card className="border-2">
+        <Card>
           <CardHeader>
-            <CardTitle className="text-lg md:text-xl flex items-center gap-2">
-              <Users className="h-6 w-6 text-primary flex-shrink-0" />
-              <span>¿A quién está dirigido?</span>
-            </CardTitle>
+            <Heart className="h-10 w-10 text-primary mb-2" />
+            <CardTitle className="text-xl">¿A quién está dirigido?</CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-2 text-sm md:text-base text-muted-foreground leading-relaxed">
+            <ul className="space-y-2 text-muted-foreground leading-relaxed">
               <li>• Adultos mayores de 60 años</li>
               <li>• Personas con poca experiencia digital</li>
               <li>• Cualquiera que quiera aprender sobre IA</li>
@@ -64,19 +60,17 @@ export default function HomePage() {
           </CardContent>
         </Card>
 
-        <Card className="border-2">
+        <Card>
           <CardHeader>
-            <CardTitle className="text-lg md:text-xl flex items-center gap-2">
-              <BookOpen className="h-6 w-6 text-primary flex-shrink-0" />
-              <span>Conocimientos Previos</span>
-            </CardTitle>
+            <Lightbulb className="h-10 w-10 text-primary mb-2" />
+            <CardTitle className="text-xl">Conocimientos Previos</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <p className="text-base md:text-lg font-semibold text-foreground">
+              <p className="text-lg font-semibold text-foreground">
                 ¡No se requieren!
               </p>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Este curso está diseñado para que cualquier persona pueda aprender, sin importar su experiencia con la tecnología. Te guiaremos en cada paso.
               </p>
             </div>
